@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 
-const SkeletonLoader = ({ className = '' }) => (
+const SkeletonLoader = ({ className = '' }: { className?: string }) => (
   <div className={`bg-gray-300 animate-pulse rounded-lg ${className}`} />
 );
 
-const ImageWithSkeleton = ({ src, alt }) => {
+const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -27,7 +27,7 @@ const ImageWithSkeleton = ({ src, alt }) => {
   );
 };
 
-const TextSkeleton = ({ lines = 3, className = '' }) => (
+const TextSkeleton = ({ lines = 3, className = '' }: { lines?: number; className?: string }) => (
   <div className={`space-y-3 ${className}`}>
     {[...Array(lines)].map((_, i) => (
       <SkeletonLoader
