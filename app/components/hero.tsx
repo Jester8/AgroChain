@@ -13,8 +13,9 @@ export default function NavbarHero() {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const heroContentRef = useRef(null);
-  const animationStartedRef = useRef(false);
   
+  // Use a ref to track if animation has been completed globally (persists across re-renders)
+  const animationCompletedRef = useRef(false);
   const fullText = "Africa's First AI + Blockchain Agricultural Trust Layer";
   const typingSpeed = 80;
 
@@ -22,15 +23,26 @@ export default function NavbarHero() {
   useEffect(() => {
     let mounted = true;
     
+    // Check if animation has already been completed
+    if (animationCompletedRef.current) {
+      // If already completed, just show the full text
+      setDisplayText(fullText);
+      setIsTypingComplete(true);
+      return;
+    }
+    
     const startTyping = () => {
-      if (!mounted || animationStartedRef.current) return;
+      if (!mounted) return;
       
-      animationStartedRef.current = true;
       let index = 0;
       
       const typeCharacter = () => {
         if (!mounted || index >= fullText.length) {
-          if (mounted) setIsTypingComplete(true);
+          if (mounted) {
+            setIsTypingComplete(true);
+            // Mark animation as completed globally
+            animationCompletedRef.current = true;
+          }
           return;
         }
         
@@ -49,7 +61,7 @@ export default function NavbarHero() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   // Handle scroll for navbar transparency
   useEffect(() => {
@@ -200,9 +212,9 @@ export default function NavbarHero() {
       <div className="relative z-10 h-full flex items-start justify-start pt-20 md:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
           <div className="max-w-3xl hero-content animate-on-scroll">
-            {/* Main Heading - Reduced size */}
-            <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-              <span className="typewriter-text inline-block">
+            {/* Main Heading with responsive line breaks */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight md:leading-normal">
+              <span className="typewriter-text inline-block break-words md:break-normal">
                 {displayText}
                 {!isTypingComplete && (
                   <span className="cursor-blink">|</span>
@@ -266,7 +278,7 @@ export default function NavbarHero() {
         </div>
       </div>
 
-      {/* Add global CSS for animations */}
+      {/* Add global CSS for animations and responsive text breaking */}
       <style jsx global>{`
         @keyframes fadeIn {
           from {
@@ -356,7 +368,7 @@ export default function NavbarHero() {
           background: rgba(255, 255, 255, 0.3);
         }
 
-        /* Mobile optimizations */
+        /* Mobile optimizations - Text breaking */
         @media (max-width: 768px) {
           section {
             min-height: 85vh;
@@ -369,6 +381,20 @@ export default function NavbarHero() {
           .hero-content p {
             line-height: 1.5;
           }
+          
+          /* Break long words on mobile */
+          .typewriter-text {
+            white-space: normal;
+            word-break: break-word;
+            overflow-wrap: break-word;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .typewriter-text {
+            /* More aggressive line breaking on very small screens */
+            word-break: break-all;
+          }
         }
 
         @media (max-width: 480px) {
@@ -379,6 +405,20 @@ export default function NavbarHero() {
           .hero-content h1 {
             font-size: 1.875rem;
             line-height: 2.25rem;
+          }
+          
+          .typewriter-text {
+            /* Allow text to break at appropriate points */
+            word-break: break-word;
+            hyphens: auto;
+          }
+        }
+
+        /* Desktop - keep as single line */
+        @media (min-width: 768px) {
+          .typewriter-text {
+            white-space: nowrap;
+            word-break: normal;
           }
         }
       `}</style>
