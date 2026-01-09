@@ -61,7 +61,7 @@ export default function ProblemSection() {
             {/* Title */}
             <div className="mb-6 sm:mb-8">
               <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900 leading-tight transition-all duration-500">
-                Africa's Agricultural Problem Is Not Production, It's Proof
+              African Farmers Deserve Better
               </h2>
             </div>
 

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, CheckCircle } from 'lucide-react';
 
 export default function NavbarHero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,26 +13,45 @@ export default function NavbarHero() {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const heroContentRef = useRef(null);
+  const animationStartedRef = useRef(false);
   
   const fullText = "Africa's First AI + Blockchain Agricultural Trust Layer";
   const typingSpeed = 80;
 
-  // Typewriter effect - runs only once
+  // Single useEffect for typing animation that only runs once
   useEffect(() => {
-    if (currentIndex < fullText.length) {
-      const timer = setTimeout(() => {
-        setDisplayText(fullText.substring(0, currentIndex + 1));
-        setCurrentIndex(prev => prev + 1);
-      }, typingSpeed);
+    let mounted = true;
+    
+    const startTyping = () => {
+      if (!mounted || animationStartedRef.current) return;
+      
+      animationStartedRef.current = true;
+      let index = 0;
+      
+      const typeCharacter = () => {
+        if (!mounted || index >= fullText.length) {
+          if (mounted) setIsTypingComplete(true);
+          return;
+        }
+        
+        setDisplayText(fullText.substring(0, index + 1));
+        index++;
+        setCurrentIndex(index);
+        setTimeout(typeCharacter, typingSpeed);
+      };
+      
+      typeCharacter();
+    };
 
-      return () => clearTimeout(timer);
-    } else if (!isTypingComplete) {
-      setIsTypingComplete(true);
-      setHasAnimated(true);
-    }
-  }, [currentIndex, isTypingComplete]);
+    // Start typing when component mounts
+    startTyping();
 
-  // Scroll effect for navbar transparency
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // Handle scroll for navbar transparency
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -42,14 +61,16 @@ export default function NavbarHero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intersection Observer for fade-in animations
+  // Intersection observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated) {
             setTimeout(() => {
-              entry.target.classList.add('animate-fade-in-up');
+              if (entry.target.classList.contains('animate-on-scroll')) {
+                entry.target.classList.add('animate-fade-in-up');
+              }
             }, 300);
           }
         });
@@ -66,12 +87,12 @@ export default function NavbarHero() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
-    { href: '/services', label: ' How it works?' },
-    { href: '/blog', label: ' Pilot' },
+    { href: '/services', label: 'How it works?' },
+    { href: '/blog', label: 'Pilot' },
   ];
 
   return (
-    <section className="relative w-full h-screen overflow-hidden font-nunito-sans">
+    <section className="relative w-full min-h-[90vh] md:min-h-[85vh] overflow-hidden font-nunito-sans">
       {/* Background Image */}
       <Image
         src="/img/hero.jpg"
@@ -80,12 +101,13 @@ export default function NavbarHero() {
         className="object-cover animate-fade-in"
         priority
         quality={85}
+        sizes="100vw"
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/30"></div>
 
-      {/* Navbar with dynamic transparency */}
+      
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-black/20 backdrop-blur-md' : 'bg-transparent'
       }`}>
@@ -102,36 +124,35 @@ export default function NavbarHero() {
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-400 group-hover:w-full transition-all duration-300 ease-out"></div>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Transparent background */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-white/90 font-medium text-sm lg:text-base relative group"
+                  className="text-white/90 font-medium text-sm lg:text-base relative group hover:text-white transition-colors duration-300"
                 >
-                  <span className="relative z-10 transition-all duration-300 group-hover:text-white group-hover:font-semibold">
+                  <span className="relative z-10">
                     {link.label}
                   </span>
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-lime-400 transition-all duration-300 group-hover:w-3/4"></span>
                 </Link>
               ))}
-              <button className="px-5 lg:px-6 py-2 border border-white/50 rounded-full font-medium text-white text-sm lg:text-base relative overflow-hidden group transition-all duration-300 hover:border-lime-400 hover:scale-105">
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+              <button className="px-5 lg:px-6 py-2 border border-white/30 rounded-full font-medium text-white text-sm lg:text-base relative overflow-hidden group transition-all duration-300 hover:border-lime-400 hover:text-lime-400 hover:bg-white/10">
+                <span className="relative z-10">
                   Contact Us
                 </span>
-                <span className="absolute inset-0 bg-lime-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Transparent */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-lg transition-all duration-300 text-white hover:bg-white/10"
               aria-label="Toggle menu"
             >
               {isOpen ? (
-                <X size={24} className="transition-all duration-300 rotate-180" />
+                <X size={24} className="transition-all duration-300" />
               ) : (
                 <Menu size={24} className="transition-all duration-300" />
               )}
@@ -142,7 +163,7 @@ export default function NavbarHero() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden transition-all duration-500 ease-out ${
+        className={`fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden transition-all duration-500 ease-out ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
@@ -150,7 +171,7 @@ export default function NavbarHero() {
 
       {/* Mobile Menu Drawer - Transparent */}
       <div
-        className={`fixed top-0 left-0 h-screen w-72 bg-gray-900/90 backdrop-blur-lg shadow-2xl z-50 transform transition-all duration-500 ease-out md:hidden ${
+        className={`fixed top-0 left-0 h-screen w-72 bg-black/80 backdrop-blur-xl shadow-2xl z-50 transform transition-all duration-500 ease-out md:hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -167,7 +188,7 @@ export default function NavbarHero() {
             </Link>
           ))}
           <button
-            className="w-full px-6 py-3 border border-white/50 rounded-full font-medium text-white hover:bg-lime-400 hover:text-black hover:border-lime-400 transition-all duration-300 mt-4"
+            className="w-full px-6 py-3 border border-white/30 rounded-full font-medium text-white hover:border-lime-400 hover:text-lime-400 hover:bg-white/10 transition-all duration-300 mt-4"
             onClick={() => setIsOpen(false)}
           >
             Contact Us
@@ -175,13 +196,13 @@ export default function NavbarHero() {
         </div>
       </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 h-full flex items-center pt-16 sm:pt-20 md:pt-16 lg:pt-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Hero Content - Aligned to left */}
+      <div className="relative z-10 h-full flex items-start justify-start pt-20 md:pt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
           <div className="max-w-3xl hero-content animate-on-scroll">
-            {/* Main Heading - Reduced to 4xl */}
-            <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-              <span className="typewriter-text">
+            {/* Main Heading - Reduced size */}
+            <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              <span className="typewriter-text inline-block">
                 {displayText}
                 {!isTypingComplete && (
                   <span className="cursor-blink">|</span>
@@ -190,32 +211,56 @@ export default function NavbarHero() {
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-white/95 mb-6 sm:mb-8 leading-relaxed animate-on-scroll opacity-0 translate-y-4">
-              AgroChain enables farmers, buyers, exporters, governments, and financial institutions to verify the origin, quality, and history of agricultural produce
+            <p className="text-sm sm:text-base md:text-lg text-white/95 mb-8 sm:mb-10 leading-relaxed animate-on-scroll opacity-0 translate-y-4">
+              Transforming agricultural supply chains with cutting-edge technology. Empowering farmers, ensuring quality, and building trust across the entire ecosystem from farm to market.
             </p>
 
-            {/* CTA Button */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 sm:mb-10 animate-on-scroll opacity-0 translate-y-4">
-              <button className="bg-lime-400 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold relative overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-lime-400/30 w-full sm:w-auto">
-                <span className="relative z-10 flex items-center gap-2 justify-center">
-                  Our Solutions
-                  <ArrowRight className="w-5 h-5 bg-black text-lime-400 rounded-full p-0.5 transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-12" />
-                </span>
-                <span className="absolute inset-0 bg-lime-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
-              </button>
+            {/* Key Benefits */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 sm:mb-12">
+              <div className="flex items-start gap-3 animate-on-scroll opacity-0 translate-y-4">
+                <CheckCircle className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-white font-semibold mb-1">Verified Quality</h3>
+                  <p className="text-white/80 text-sm">Every product has a verified origin and quality history</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 animate-on-scroll opacity-0 translate-y-4" style={{ animationDelay: '100ms' }}>
+                <CheckCircle className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-white font-semibold mb-1">Fair Pricing</h3>
+                  <p className="text-white/80 text-sm">Transparent pricing mechanisms for better farmer income</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 animate-on-scroll opacity-0 translate-y-4" style={{ animationDelay: '200ms' }}>
+                <CheckCircle className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-white font-semibold mb-1">Global Access</h3>
+                  <p className="text-white/80 text-sm">Connect directly with international buyers and markets</p>
+                </div>
+              </div>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {['AgriTech', 'Eco-Friendly', 'Precision Farming', 'Sustainable Farming'].map((tag, index) => (
+            {/* Tags - Moved up */}
+            <div className="flex flex-wrap gap-3 mb-8 sm:mb-12">
+              {['Data Security', 'Analytics Dashboard', 'Mobile First'].map((tag, index) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-medium border border-white/20 animate-on-scroll opacity-0 translate-y-4 hover:bg-white/20 hover:border-lime-400/50 hover:scale-105 transition-all duration-300 cursor-pointer"
-                  style={{ animationDelay: `${index * 100 + 800}ms` }}
+                  className="px-4 sm:px-5 py-2.5 sm:py-3 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm sm:text-base font-medium border border-white/20 animate-on-scroll opacity-0 translate-y-4 hover:bg-white/20 hover:border-lime-400/50 hover:scale-105 transition-all duration-300 cursor-pointer flex items-center gap-2"
+                  style={{ animationDelay: `${index * 100 + 300}ms` }}
                 >
                   {tag}
                 </span>
               ))}
+            </div>
+
+            {/* CTA Button - Moved down after tags */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-on-scroll opacity-0 translate-y-4">
+              <button className="bg-lime-400 hover:bg-lime-500 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold relative overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-lime-400/30 w-full sm:w-auto">
+                <span className="relative z-10 flex items-center gap-2 justify-center">
+                  Explore Our Solutions
+                  <ArrowRight className="w-5 h-5 bg-black text-lime-400 rounded-full p-0.5 transition-all duration-300 group-hover:translate-x-1" />
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -270,6 +315,14 @@ export default function NavbarHero() {
           vertical-align: middle;
         }
 
+        /* Ensure typing animation runs only once */
+        .typewriter-text {
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          min-height: 1.2em;
+        }
+
         /* Smooth transitions */
         * {
           transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -283,11 +336,6 @@ export default function NavbarHero() {
         nav {
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-        }
-
-        /* Smooth scroll */
-        html {
-          scroll-behavior: smooth;
         }
 
         /* Custom scrollbar */
@@ -306,6 +354,32 @@ export default function NavbarHero() {
 
         ::-webkit-scrollbar-thumb:hover {
           background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+          section {
+            min-height: 85vh;
+          }
+          
+          .hero-content h1 {
+            line-height: 1.2;
+          }
+          
+          .hero-content p {
+            line-height: 1.5;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section {
+            min-height: 80vh;
+          }
+          
+          .hero-content h1 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+          }
         }
       `}</style>
     </section>

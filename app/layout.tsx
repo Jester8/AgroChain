@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import AgroChatBot from "./components/chatbot";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -24,6 +25,9 @@ export default function RootLayout({
         className={`${nunitoSans.variable} font-nunito-sans antialiased`}
       >
         {children}
+        
+        {/* Add the chatbot component here */}
+        <AgroChatBot />
       </body>
     </html>
   );
