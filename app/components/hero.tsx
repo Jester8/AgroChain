@@ -212,9 +212,9 @@ export default function NavbarHero() {
       <div className="relative z-10 h-full flex items-start justify-start pt-20 md:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
           <div className="max-w-3xl hero-content animate-on-scroll">
-            {/* Main Heading with responsive line breaks */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight md:leading-normal">
-              <span className="typewriter-text inline-block break-words md:break-normal">
+            {/* Main Heading - Now broken on all devices */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              <span className="typewriter-text inline-block break-words">
                 {displayText}
                 {!isTypingComplete && (
                   <span className="cursor-blink">|</span>
@@ -327,11 +327,12 @@ export default function NavbarHero() {
           vertical-align: middle;
         }
 
-        /* Ensure typing animation runs only once */
+        /* Typing animation runs only once */
         .typewriter-text {
           display: inline-block;
-          white-space: nowrap;
-          overflow: hidden;
+          white-space: normal;
+          word-break: break-word;
+          overflow-wrap: break-word;
           min-height: 1.2em;
         }
 
@@ -368,7 +369,7 @@ export default function NavbarHero() {
           background: rgba(255, 255, 255, 0.3);
         }
 
-        /* Mobile optimizations - Text breaking */
+        /* Mobile optimizations */
         @media (max-width: 768px) {
           section {
             min-height: 85vh;
@@ -381,20 +382,6 @@ export default function NavbarHero() {
           .hero-content p {
             line-height: 1.5;
           }
-          
-          /* Break long words on mobile */
-          .typewriter-text {
-            white-space: normal;
-            word-break: break-word;
-            overflow-wrap: break-word;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .typewriter-text {
-            /* More aggressive line breaking on very small screens */
-            word-break: break-all;
-          }
         }
 
         @media (max-width: 480px) {
@@ -405,20 +392,6 @@ export default function NavbarHero() {
           .hero-content h1 {
             font-size: 1.875rem;
             line-height: 2.25rem;
-          }
-          
-          .typewriter-text {
-            /* Allow text to break at appropriate points */
-            word-break: break-word;
-            hyphens: auto;
-          }
-        }
-
-        /* Desktop - keep as single line */
-        @media (min-width: 768px) {
-          .typewriter-text {
-            white-space: nowrap;
-            word-break: normal;
           }
         }
       `}</style>
