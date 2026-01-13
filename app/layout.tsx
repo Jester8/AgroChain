@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Nunito_Sans, Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import AgroChatBot from "./components/chatbot";
 
@@ -9,6 +9,12 @@ const nunitoSans = Nunito_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const robotoSlab = Roboto_Slab({
+  variable: "--font-slab",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "AgroChain",
   description: "Africa's First AI + Blockchain Agricultural Trust Layer",
@@ -16,17 +22,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={`${nunitoSans.variable} font-nunito-sans antialiased`}
+        className={`${nunitoSans.variable} ${robotoSlab.variable} font-nunito-sans antialiased`}
       >
         {children}
-        
-        {/* Add the chatbot component here */}
         <AgroChatBot />
       </body>
     </html>

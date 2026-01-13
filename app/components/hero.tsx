@@ -125,16 +125,20 @@ export default function NavbarHero() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link 
-              href="/" 
-              className="flex items-center gap-2 group relative"
-            >
-              <span className="text-lg sm:text-xl font-bold text-white group-hover:text-lime-400 transition-all duration-300 ease-out">
-                AgroChain
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-400 group-hover:w-full transition-all duration-300 ease-out"></div>
-            </Link>
+          
+  <Link href="/" className="flex items-center">
+  <div className="relative w-30 h-10 sm:w-20 sm:h-20 md:w-40 md:h-20">
+    <Image
+      src="/logo/logo.png"
+      alt="Agrochain Logo"
+      fill
+      className="object-contain"
+      priority
+    />
+  </div>
+</Link>
+
+
 
             {/* Desktop Navigation - Transparent background */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -223,7 +227,7 @@ export default function NavbarHero() {
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg text-white/95 mb-8 sm:mb-10 leading-relaxed animate-on-scroll opacity-0 translate-y-4">
+            <p className="text-sm sm:text-base font-roboto-slab md:text-lg text-white/95 mb-8 sm:mb-10 leading-relaxed animate-on-scroll opacity-0 translate-y-4">
               Transforming agricultural supply chains with cutting-edge technology. Empowering farmers, ensuring quality, and building trust across the entire ecosystem from farm to market.
             </p>
 

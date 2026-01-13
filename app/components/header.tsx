@@ -23,14 +23,14 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            {/* <Image
+            <Image
               src="/logo/logo.png"
               alt="EcoHarvest Logo"
               width={45}
               height={45}
               className="w-10 h-10 sm:w-11 sm:h-11"
-            /> */}
-            <span className="text-lg sm:text-xl font-bold text-white">Agrochain</span>
+            />
+          
           </Link>
 
           {/* Navigation Links - Desktop */}
