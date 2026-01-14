@@ -2,6 +2,7 @@
 import React from 'react';
 import { Twitter, Linkedin, BookOpen, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -65,12 +66,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-block mb-6">
-              <div className="flex items-center gap-2">
-               
-                <span className="text-xl font-bold text-white">AgroChain</span>
-              </div>
-            </Link>
+            <div className="relative w-30 h-10 sm:w-20 sm:h-20 md:w-40 md:h-20 mb-4">
+              <Image
+                src="/logo/logo.png"
+                alt="AgroChain Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             
             <p className="text-gray-400 text-sm mb-6 max-w-md">
               Transforming agriculture through AI and blockchain technology. Empowering farmers, ensuring transparency, and building trust across the agricultural value chain.
@@ -82,7 +86,7 @@ export default function Footer() {
                 const Icon = item.icon;
                 return (
                   <div key={index} className="flex items-center gap-3 text-gray-300 text-sm">
-                    <Icon className="w-4 h-4 text-emerald-400" />
+                    <Icon className="w-4 h-4 text-lime-400" />
                     <span>{item.text}</span>
                   </div>
                 );
@@ -99,7 +103,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110"
+                    className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-gray-300 hover:text-lime-400 transition-all duration-300 hover:scale-110"
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />
@@ -118,7 +122,7 @@ export default function Footer() {
                   <li key={linkIndex}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300 inline-flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-lime-400 text-sm transition-colors duration-300 inline-flex items-center gap-2 group"
                     >
                       <span>{link.name}</span>
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
@@ -141,36 +145,16 @@ export default function Footer() {
               © {currentYear} AgroChain. All Rights Reserved
             </p>
             <p className="text-gray-500 text-xs mt-1">
-              Powered by <span className="text-emerald-400">Lazerjet Technologies LTD</span>
+              Powered by <span className="text-lime-400">Lazerjet Technologies LTD</span>
             </p>
           </div>
-
-        
-
-        
         </div>
       </div>
-
-    
-      {/* <div className="bg-gray-950 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-            <div className="flex items-center gap-4">
-              <span>ISO 27001 Certified</span>
-              <span className="hidden sm:inline">•</span>
-              <span>GDPR Compliant</span>
-            </div>
-            <div>
-              <span>Made with ❤️ for farmers worldwide</span>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-lime-500 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 z-50"
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-br from-lime-500 to-lime-600 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 z-50"
         aria-label="Back to top"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -216,8 +216,8 @@ export default function NavbarHero() {
       <div className="relative z-10 h-full flex items-start justify-start pt-20 md:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
           <div className="max-w-3xl hero-content animate-on-scroll">
-            {/* Main Heading - Now broken on all devices */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+            {/* Main Heading - ALFA SLAB ONE */}
+            <h1 className="font-alfa text-1xl sm:text-2xl md:text-4xl lg:text-4xl text-white mb-4 sm:mb-6 leading-tight">
               <span className="typewriter-text inline-block break-words">
                 {displayText}
                 {!isTypingComplete && (
@@ -227,7 +227,7 @@ export default function NavbarHero() {
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-base font-roboto-slab md:text-lg text-white/95 mb-8 sm:mb-10 leading-relaxed animate-on-scroll opacity-0 translate-y-4">
+            <p className="text-sm sm:text-base font-nunito-sans md:text-lg text-white/95 mb-8 sm:mb-10 leading-relaxed animate-on-scroll opacity-0 translate-y-4">
               Transforming agricultural supply chains with cutting-edge technology. Empowering farmers, ensuring quality, and building trust across the entire ecosystem from farm to market.
             </p>
 

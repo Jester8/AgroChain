@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans, Roboto_Slab } from "next/font/google";
+import { Nunito_Sans, Roboto_Slab, Alfa_Slab_One } from "next/font/google";
 import "./globals.css";
 import AgroChatBot from "./components/chatbot";
 
@@ -15,6 +15,12 @@ const robotoSlab = Roboto_Slab({
   weight: ["400", "600", "700"],
 });
 
+const alfaSlabOne = Alfa_Slab_One({
+  variable: "--font-alfa-slab",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "AgroChain",
   description: "Africa's First AI + Blockchain Agricultural Trust Layer",
@@ -28,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunitoSans.variable} ${robotoSlab.variable} font-nunito-sans antialiased`}
+        className={`${nunitoSans.variable} ${robotoSlab.variable} ${alfaSlabOne.variable} font-nunito-sans antialiased`}
       >
         {children}
         <AgroChatBot />
