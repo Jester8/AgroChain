@@ -16,7 +16,7 @@ export default function NavbarHero() {
   
   // Use a ref to track if animation has been completed globally (persists across re-renders)
   const animationCompletedRef = useRef(false);
-  const fullText = "Africa's First AI + Blockchain Agricultural Trust Layer";
+  const fullText = "Africa's First AI + Blockchain Agricultural Trust Layer For Farmers.";
   const typingSpeed = 80;
 
   // Single useEffect for typing animation that only runs once
@@ -217,7 +217,7 @@ export default function NavbarHero() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
           <div className="max-w-3xl hero-content animate-on-scroll">
             {/* Main Heading - ALFA SLAB ONE */}
-            <h1 className="font-alfa text-1xl sm:text-2xl md:text-4xl lg:text-4xl text-white mb-4 sm:mb-6 leading-tight">
+            <h1 className="font-nunito-sans text-lg font-bold sm:text-1xl md:text-1xl lg:text-4xl text-white mb-4 sm:mb-6 leading-tight">
               <span className="typewriter-text inline-block break-words">
                 {displayText}
                 {!isTypingComplete && (
