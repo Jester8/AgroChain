@@ -47,7 +47,7 @@ export default function ProblemSection() {
   }, []);
 
   return (
-    <section className="w-full bg-white py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 font-nunito-sans">
+    <section id='problem' className="w-full bg-white py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 font-nunito-sans">
       <div className="max-w-7xl mx-auto">
         {/* Top Accent Line */}
         <div className="flex justify-start mb-8 sm:mb-10 md:mb-12">

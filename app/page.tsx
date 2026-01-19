@@ -5,17 +5,19 @@ import Solutions from './components/solutions';
 import Who from './components/who';
 import JoinNow from './components/JoinNow';
 import Footer from './components/footer';
- 
+import About from '../app/components/about';
+
 export default function Home() {
   return (
     <>
-      {/* <Navbar /> */}
-      <Hero />
-      <Problem />
-      <Solutions />
-      <Who />
-      <JoinNow />
+      <Hero id="hero" />
+      <Problem id="problem" />
+      <Solutions id="solutions" />
+      <Who id="who" />
+      <JoinNow id="join" />
+      <About id="about" />
       <Footer />
+      
     </>
   );
 }

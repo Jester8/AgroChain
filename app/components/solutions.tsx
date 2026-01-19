@@ -100,14 +100,15 @@ export default function Solutions() {
       className="bg-[#f0fdf4] transition-all duration-500"
     >
       {/* Desktop Section */}
-      <section className="hidden lg:block px-8 lg:px-16 py-20 bg-gradient-to-b from-lime-50 to-emerald-50">
+      <section id='solutions' className="hidden lg:block px-8 lg:px-16 py-20 bg-gradient-to-b from-lime-50 to-emerald-50">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6 animate-fade-in">
               Our Solutions
             </h1>
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto transition-all duration-500 animate-slide-up">
-              AgroChain Puts Farmers in Control through a series of steps designed to ensure transparency, trust, and fair pricing in agricultural trade.
+             AgroChain introduces a neutral, secure, and tamper-proof digital layer that records farm activities while
+maintaining farmer ownership of data. 
             </p>
           </div>
 

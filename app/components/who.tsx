@@ -57,7 +57,7 @@ export default function WhoWeHelp() {
 
   return (
     <div style={{ fontFamily: 'Nunito Sans, sans-serif' }} className="bg-white">
-      <section className="px-4 sm:px-6 lg:px-16 py-16 md:py-24">
+      <section id='who' className="px-4 sm:px-6 lg:px-16 py-16 md:py-24">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12 md:mb-20">

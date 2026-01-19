@@ -38,7 +38,7 @@ export default function JoinNow() {
   return (
     <div style={{ fontFamily: 'Nunito Sans, sans-serif' }} className="relative">
       {/* Desktop Section */}
-      <section className="hidden md:block relative w-full py-20 md:py-24 lg:py-28 bg-gradient-to-br from-emerald-50 via-green-50 to-lime-50">
+      <section id='join' className="hidden md:block relative w-full py-20 md:py-24 lg:py-28 bg-gradient-to-br from-emerald-50 via-green-50 to-lime-50">
         {/* Clean Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-white via-emerald-50/30 to-lime-50/30"></div>
 
