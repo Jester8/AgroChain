@@ -10,14 +10,13 @@ import About from '../app/components/about';
 export default function Home() {
   return (
     <>
-      <Hero id="hero" />
-      <Problem id="problem" />
-      <Solutions id="solutions" />
-      <Who id="who" />
-      <JoinNow id="join" />
-      <About id="about" />
+      <Hero />
+      <Problem />
+      <Solutions />
+      <Who />
+      <JoinNow />
+      <About />
       <Footer />
-      
     </>
   );
 }
