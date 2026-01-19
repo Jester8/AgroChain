@@ -102,7 +102,7 @@ export default function About() {
 
       <style jsx>{`
         @keyframes slideInFromBottom {
-          from {
+          from {    
             opacity: 0;
             transform: translateY(20px);
           }
