@@ -21,7 +21,7 @@ const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
         className={`object-cover transition-opacity duration-300 ${
           isLoading ? 'opacity-0' : 'opacity-100'
         }`}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
       />
     </div>
   );

@@ -64,7 +64,7 @@ export default function WaitlistPopup() {
 
   const handleWhatsAppClick = () => {
     // Replace with your WhatsApp group link
-    window.open('https://chat.whatsapp.com/YOUR_GROUP_LINK', '_blank');
+    window.open('https://chat.whatsapp.com/JPiJSkR379M5Kl3Sp7J06J', '_blank');
   };
 
   if (!isVisible) return null;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito_Sans, Roboto_Slab, Alfa_Slab_One } from "next/font/google";
 import "./globals.css";
-import AgroChatBot from "./components/chatbot";
+import AgroChatBot from "../components/chatbot";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
