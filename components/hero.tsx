@@ -90,7 +90,7 @@ export default function NavbarHero() {
                   </h1>
 
                   <p className="text-xs font-nunito-sans text-white/90 mb-3 leading-relaxed">
-                    Safe and honest records for farmers. Helping farmers prove their work, 
+                   We are helping farmers prove their work, 
                     buyers trust what they're buying, and institutions make better decisions with real data.
                   </p>
 
@@ -112,8 +112,8 @@ export default function NavbarHero() {
                   </h1>
 
                   <p className="text-sm font-nunito-sans text-white/90 mb-4 leading-relaxed">
-                    Keep safe and honest records of your farming work. AgroChain helps farmers prove 
-                    their work, helps buyers trust what they are buying, and helps institutions make 
+                   We are helping farmers prove their work, 
+                    buyers trust what they're buying, and institutions make better decisions with real data.
                     better decisions using real data.
                   </p>
 
@@ -136,9 +136,7 @@ export default function NavbarHero() {
 
                   <p className="text-sm lg:text-base font-nunito-sans text-white/90 mb-6 leading-relaxed">
                     AgroChain helps farmers keep safe and honest records of their farming work. 
-                    We record what happens on the farm and turn those records into proof that 
-                    cannot be changed or lied about. Helping farmers prove their work, buyers 
-                    trust what they are buying, and institutions make better decisions using real data.
+                      Helping farmers prove their work, buyers trust what they are buying, and institutions make better decisions using real data.
                   </p>
 
                   <button 

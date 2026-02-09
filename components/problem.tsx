@@ -60,9 +60,9 @@ export default function ProblemSection() {
           <div className="flex flex-col justify-center order-2 lg:order-1">
             {/* Title */}
             <div className="mb-6 sm:mb-8">
-              <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900 leading-tight transition-all duration-500">
+              <h1 className="text-2xl sm:text-2xl md:text-2xl font-bold text-gray-900 leading-tight transition-all duration-500">
               African Farmers Deserve Better
-              </h2>
+              </h1>
             </div>
 
             {/* Mobile Image - shows after heading on mobile only */}

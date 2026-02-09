@@ -95,14 +95,11 @@ export default function Solutions() {
       {/* Desktop Section */}
       <section id='solutions' className="hidden lg:block px-8 lg:px-16 py-20 bg-gradient-to-b from-lime-50 to-emerald-50">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6 animate-fade-in">
-              Our Solution
+          <div className="mb-16 text-left">
+            <h1 className="text-2xl sm:text-2xl md:text-2xl font-bold text-gray-900 leading-tight mb-6 animate-fade-in">
+              Our Solutions
             </h1>
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto transition-all duration-500 animate-slide-up">
-             AgroChain introduces a neutral, secure, and tamper-proof digital layer that records farm activities while
-maintaining farmer ownership of data. 
-            </p>
+           
           </div>
 
         
@@ -148,12 +145,10 @@ maintaining farmer ownership of data.
       {/* Mobile Section */}
       <section className="lg:hidden px-6 py-16 bg-gradient-to-b from-lime-50 to-emerald-50">
         <div className="max-w-md mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-6 animate-slide-in-right">
-            Our Solution
+          <h1 className="text-2xl font-bold text-gray-900 leading-tight mb-6 animate-slide-in-right">
+            Our Solutions
           </h1>
-          <p className="text-lg text-gray-700 leading-relaxed mb-12 transition-all duration-500 animate-slide-in-left">
-            AgroChain Puts Farmers in Control through a series of steps designed to ensure transparency, trust, and fair pricing in agricultural trade.
-          </p>
+         
 
       
           {/* Mobile Card Slider */}

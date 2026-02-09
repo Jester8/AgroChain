@@ -60,13 +60,11 @@ export default function WhoWeHelp() {
       <section id='who' className="px-4 sm:px-6 lg:px-16 py-16 md:py-24">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <div className="text-start mb-12 md:mb-20">
+            <h1 className="text-2xl sm:text-2xl md:text-2xl font-bold text-gray-900 mb-6 leading-tight">
               Who We Help
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Empowering Everyone in the Agricultural Value Chain
-            </p>
+            </h1>
+            
           </div>
 
           {/* Grid of Cards Only */}
