@@ -23,7 +23,7 @@ const alfaSlabOne = Alfa_Slab_One({
 
 export const metadata: Metadata = {
   title: "AgroChain",
-  description: "Africa's First AI + Blockchain Agricultural Trust Layer",
+  description: "Data storage solution for farmers using AI and blockchain technology.",
 };
 
 export default function RootLayout({
