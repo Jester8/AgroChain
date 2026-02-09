@@ -97,7 +97,7 @@ export default function Solutions() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6 animate-fade-in">
-              Our Solutions
+              Our Solution
             </h1>
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto transition-all duration-500 animate-slide-up">
              AgroChain introduces a neutral, secure, and tamper-proof digital layer that records farm activities while
@@ -149,29 +149,13 @@ maintaining farmer ownership of data.
       <section className="lg:hidden px-6 py-16 bg-gradient-to-b from-lime-50 to-emerald-50">
         <div className="max-w-md mx-auto">
           <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-6 animate-slide-in-right">
-            Our Solutions
+            Our Solution
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed mb-12 transition-all duration-500 animate-slide-in-left">
             AgroChain Puts Farmers in Control through a series of steps designed to ensure transparency, trust, and fair pricing in agricultural trade.
           </p>
 
-          {/* Additional Features for Mobile */}
-          <div className="mb-8 grid grid-cols-2 gap-3 animate-fade-in">
-            {additionalFeatures.map((feature, idx) => {
-              const FeatureIcon = feature.icon;
-              return (
-                <div 
-                  key={idx} 
-                  className="bg-white/90 backdrop-blur-sm border border-lime-200 rounded-lg p-3 hover:shadow-md transition-all duration-300"
-                >
-                  <FeatureIcon className="w-6 h-6 text-lime-600 mb-1" />
-                  <h4 className="font-semibold text-gray-800 text-xs">{feature.title}</h4>
-                  <p className="text-xs text-gray-600 mt-1 leading-tight">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
+      
           {/* Mobile Card Slider */}
           <div className="relative">
             {/* Card Container */}
@@ -244,31 +228,7 @@ maintaining farmer ownership of data.
             </div>
           </div>
 
-          {/* Mobile Stats (Updated) */}
-          <div className="mt-12 grid grid-cols-2 gap-4 text-center animate-slide-up">
-            {/* <div className="bg-white/80 p-4 rounded-xl border border-lime-200">
-              <div className="text-xl font-bold text-lime-700">Coming Soon</div>
-              <div className="text-xs text-gray-600 mt-1">App Launch</div>
-            </div> */}
-            <div className="bg-white/80 p-4 rounded-xl border border-lime-200">
-              <div className="text-xl font-bold text-lime-700">24/7</div>
-              <div className="text-xs text-gray-600 mt-1">Availability</div>
-            </div>
-            <div className="bg-white/80 p-4 rounded-xl border border-lime-200">
-              <div className="text-xl font-bold text-lime-700">100%</div>
-              <div className="text-xs text-gray-600 mt-1">Transparency</div>
-            </div>
-          </div>
-
-          {/* Mobile CTA (Updated) */}
-          <div className="mt-12 text-center animate-pulse-once">
-            <p className="text-gray-700 mb-6">
-              Empowering farmers through technology
-            </p>
-            <button className="bg-lime-100 hover:bg-lime-200 text-lime-800 font-semibold py-4 px-8 rounded-full shadow-lg transition-all duration-300 active:scale-95 w-full border border-lime-300">
-              Learn More About Our Mission
-            </button>
-          </div>
+      
         </div>
       </section>
 

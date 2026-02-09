@@ -68,7 +68,7 @@ export default function ProblemSection() {
             {/* Mobile Image - shows after heading on mobile only */}
             <div className="h-64 sm:h-72 md:hidden lg:hidden order-1 mb-6 sm:mb-8">
               <ImageWithSkeleton
-                src="/img/slide.png"
+                src="/img/more.jpg"
                 alt="Agricultural farming"
               />
             </div>
@@ -110,7 +110,7 @@ export default function ProblemSection() {
           {/* Right Image - hidden on mobile */}
           <div className="hidden md:block h-64 sm:h-72 md:h-80 lg:h-96 order-1 lg:order-2">
             <ImageWithSkeleton
-              src="/img/slide.png"
+              src="/img/more.jpg"
               alt="Agricultural farming"
             />
           </div>
