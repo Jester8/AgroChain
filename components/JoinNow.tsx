@@ -54,28 +54,10 @@ export default function JoinNow() {
                 Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-lime-600">Agricultural</span> Revolution
               </h1>
               
-              <p className="text-lg lg:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Be part of the transformation. Explore agricultural advancement and create meaningful change together.
-              </p>
+        
             </div>
 
-            {/* Benefits Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10 lg:mb-12 max-w-4xl mx-auto">
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-                return (
-                  <div 
-                    key={index} 
-                    className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm border border-emerald-100 hover:shadow-md hover:border-emerald-200 transition-all duration-300"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
-                      <Icon className="w-6 h-6 text-emerald-600" />
-                    </div>
-                    <span className="text-gray-700 text-sm font-medium text-center">{benefit.text}</span>
-                  </div>
-                );
-              })}
-            </div>
+          
 
             {/* Success Message */}
             {submitted && (

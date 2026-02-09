@@ -14,8 +14,7 @@ export default function Home() {
       <Problem />
       <Solutions />
       <Who />
-      <JoinNow />
-      <About />
+     
       <Footer />
       <WaitlistPopup />
     </>

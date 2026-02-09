@@ -53,7 +53,7 @@ export default function NavbarHero() {
   ];
 
   return (
-    <section id="hero" className="relative w-full min-h-[90vh] md:min-h-[85vh] overflow-hidden font-nunito-sans">
+    <section id="hero" className="relative w-full min-h-[40vh] md:min-h-[70vh] overflow-hidden font-nunito-sans">
       {/* Background Image */}
       <Image
         src="/img/hero.jpg"
@@ -163,12 +163,12 @@ export default function NavbarHero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 h-full ml-5 flex items-start justify-start pt-20 md:pt-24">
+      <div className="relative z-10 h-80 ml-5 flex items-start justify-start pt-20 md:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
           <div className="max-w-3xl hero-content">
             {/* Main Heading - Slide In */}
             <h1 className="font-nunito-sans text-lg font-bold sm:text-xl md:text-3xl lg:text-4xl text-white mb-4 sm:mb-6 leading-tight animate-on-scroll opacity-0 translate-x-[-20px]">
-              Africa's First AI + Blockchain Agricultural Trust Layer For Farmers.
+              Secure data storage solution for Farmers.
             </h1>
 
             {/* Description */}
@@ -176,31 +176,7 @@ export default function NavbarHero() {
               Transforming agricultural supply chains with cutting-edge technology. Empowering farmers, ensuring quality, and building trust across the entire ecosystem from farm to market.
             </p>
 
-            {/* Key Benefits */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 sm:mb-12">
-              <div className="flex items-start gap-3 animate-on-scroll opacity-0 translate-x-[-20px]" style={{ animationDelay: '150ms' }}>
-                <CheckCircle className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-white font-semibold mb-1">Verified Quality</h3>
-                  <p className="text-white/80 text-sm">Every product has a verified origin and quality history</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 animate-on-scroll opacity-0 translate-x-[-20px]" style={{ animationDelay: '200ms' }}>
-                <CheckCircle className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-white font-semibold mb-1">Fair Pricing</h3>
-                  <p className="text-white/80 text-sm">Transparent pricing mechanisms for better farmer income</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 animate-on-scroll opacity-0 translate-x-[-20px]" style={{ animationDelay: '250ms' }}>
-                <CheckCircle className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-white font-semibold mb-1">Global Access</h3>
-                  <p className="text-white/80 text-sm">Connect directly with international buyers and markets</p>
-                </div>
-              </div>
-            </div>
-
+         
             {/* CTA Button */}
             <div className="animate-on-scroll opacity-0 translate-x-[-20px]" style={{ animationDelay: '300ms' }}>
               <button 

@@ -24,16 +24,9 @@ export default function Solutions() {
       color: 'bg-blue-500',
       details: 'Real-time data capture with photo evidence and quality assessment tools'
     },
+  
     {
       number: '03',
-      title: 'Track Movement',
-      description: 'Real-time tracking of produce movement from farm to market with temperature monitoring',
-      icon: Truck,
-      color: 'bg-green-500',
-      details: 'GPS tracking, handling alerts, and condition monitoring throughout the supply chain'
-    },
-    {
-      number: '04',
       title: 'Verify Quality',
       description: 'Buyers scan QR codes to verify origin, handling history, and quality certifications',
       icon: QrCode,
@@ -41,7 +34,7 @@ export default function Solutions() {
       details: 'Complete transparency with blockchain-verified records and quality assurance data'
     },
     {
-      number: '05',
+      number: '04',
       title: 'Build Identity',
       description: 'Digital reputation builds financial identity and credit history for farmers',
       icon: TrendingUp,
@@ -112,25 +105,10 @@ maintaining farmer ownership of data.
             </p>
           </div>
 
-          {/* Additional Features */}
-          <div className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-4 animate-slide-up" style={{ animationDelay: '200ms' }}>
-            {additionalFeatures.map((feature, idx) => {
-              const FeatureIcon = feature.icon;
-              return (
-                <div 
-                  key={idx} 
-                  className="bg-white/80 backdrop-blur-sm border border-lime-200 rounded-xl p-4 hover:shadow-lg hover:scale-105 transition-all duration-300 hover:border-lime-300"
-                >
-                  <FeatureIcon className="w-8 h-8 text-lime-600 mb-2" />
-                  <h4 className="font-semibold text-gray-800 text-sm">{feature.title}</h4>
-                  <p className="text-xs text-gray-600 mt-1">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
+        
 
           {/* Desktop Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 animate-slide-up" style={{ animationDelay: '400ms' }}>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-slide-up" style={{ animationDelay: '400ms' }}>
             {steps.map((step, idx) => {
               const Icon = step.icon;
               return (
@@ -163,21 +141,7 @@ maintaining farmer ownership of data.
             })}
           </div>
 
-          {/* Stats Section (Updated) */}
-          <div className="mt-16 grid grid-cols-2 gap-6 text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
-            {/* <div className="bg-white/80 p-6 rounded-xl border border-lime-200 hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-lime-700">Coming Soon</div>
-              <div className="text-sm text-gray-600 mt-2">Mobile App Launch</div>
-            </div> */}
-            <div className="bg-white/80 p-6 rounded-xl border border-lime-200 hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-lime-700">24/7</div>
-              <div className="text-sm text-gray-600 mt-2">Platform Availability</div>
-            </div>
-            <div className="bg-white/80 p-6 rounded-xl border border-lime-200 hover:shadow-lg transition-all duration-300">
-              <div className="text-3xl font-bold text-lime-700">100%</div>
-              <div className="text-sm text-gray-600 mt-2">Transparency Guaranteed</div>
-            </div>
-          </div>
+        
         </div>
       </section>
 

@@ -56,7 +56,7 @@ export default function Footer() {
   const contactInfo = [
     { icon: MapPin, text: 'Ibadan, Nigeria' },
     { icon: Phone, text: '+224 80 5067 4789' },
-    { icon: Mail, text: 'contact@agrochain.ng' },
+    { icon: Mail, text: 'info@agrochain.africa' },
   ];
 
   return (
