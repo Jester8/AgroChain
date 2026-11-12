@@ -1,232 +1,80 @@
-
-
 # 🌾 AgroChain
 
-**AgroChain** is Africa’s agricultural trust and coordination layer, designed to connect farmers, buyers, aggregators, and institutions through **verifiable data, fair pricing, and trusted partnerships**—without forcing complexity on farmers.
-
-AgroChain focuses on **proof of production, price transparency, and farmer prosperity**, bridging traditional agriculture with modern digital infrastructure.
-
----
-
-## 🌍 Vision
-
-African agriculture suffers not from lack of production, but from **lack of trust, access, and coordination**.
-
-AgroChain exists to:
-
-* Restore **trust** between farmers and buyers
-* Enable **fair pricing** and predictable income
-* Create a **verifiable agricultural record** for farmers
-* Unlock access to finance, logistics, and markets
-
-> **Our belief:** Farmers deserve transparency, dignity, and economic power.
-
----
-
-## 🧩 The Problem
-
-* Farmers are often **underpaid** due to opaque pricing
-* Buyers struggle with **quality verification**
-* Data is fragmented or non-existent
-* Smallholder farmers lack **digital identity and credibility**
-* Financial institutions lack trusted agricultural data
-
----
-
-## ✅ The AgroChain Solution
-
-AgroChain provides a **digital trust layer** that enables:
-
-### 1. Proof
-
-* Verified farmer profiles
-* Production records
-* Harvest confirmation
-* Delivery and transaction history
-
-### 2. Pricing Transparency
-
-* Market-aligned pricing visibility
-* Reduced middleman exploitation
-* Negotiation backed by data
-
-### 3. Prosperity
-
-* Better income stability for farmers
-* Market access beyond local buyers
-* Pathways to credit, insurance, and partnerships
-
----
-
-## 👥 Who AgroChain Is For
-
-* **Farmers** – to gain visibility, trust, and better prices
-* **Buyers & Aggregators** – to source verified produce
-* **Logistics Providers** – to coordinate supply chains
-* **Financial Institutions** – to assess agricultural risk
-* **NGOs & Governments** – to support data-driven agriculture
-
----
-
-## 🏗️ Platform Architecture (High-Level)
-
-AgroChain is built as a **modular platform**:
-
-* **Farmer Interface** – simple, mobile-first interaction
-* **Aggregator Dashboard** – verification and coordination
-* **Market Interface** – price discovery and negotiation
-* **Data Layer** – production and transaction records
-* **Integration Layer** – payments, logistics, and reporting
-
-The system is designed to scale from **local cooperatives to national agricultural networks**.
-
----
-
-## 🧑‍💻 Tech Stack
-
-### Frontend
-
-* **Next.js (App Router)**
-* **TypeScript**
-* **Tailwind CSS**
-* **Material UI Icons**
-* **React Loading Skeleton**
-
-### UI / UX
-
-* Mobile-first design
-* Accessibility-aware components
-* Skeleton loaders for low-bandwidth environments
-* Clean, trust-focused visual language
-
-### Infrastructure (Planned / Optional)
-
-* Cloud-based APIs
-* Secure data storage
-* Modular backend services
-* Integration-ready architecture
-
----
-
-## 📂 Project Structure
-
-```text
-src/
- ├── app/                # App Router pages and layouts
- │   ├── layout.tsx
- │   ├── page.tsx
- │   └── globals.css
- ├── components/         # Reusable UI components
- │   ├── Navbar.tsx
- │   ├── Footer.tsx
- │   ├── SkeletonCard.tsx
- ├── lib/                # Configs and helpers
- ├── utils/              # Utility functions
- └── styles/             # Shared styling
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-* Node.js v18+
-* npm or yarn
-
-### Installation
-
-```bash
-git clone https://github.com/your-username/agrochain-web.git
-cd agrochain-web
-npm install
-```
-
-### Run Development Server
-
-```bash
-npm run dev
-```
-
-Open `http://localhost:3000` to view the app.
-
----
-
-## 🎨 Design Principles
-
-* **Trust over hype**
-* **Clarity over complexity**
-* **Real farmers, real people**
-* **Low-bandwidth friendly**
-* **Scalable, not fragile**
-
-AgroChain intentionally avoids unnecessary visual complexity or futuristic aesthetics.
-
----
-
-## 🔐 Data & Trust Philosophy
-
-AgroChain treats farmer data as:
-
-* **Farmer-owned**
-* **Permission-based**
-* **Purpose-driven**
-
-Data is collected to **empower**, not exploit.
-
----
-
-## 🛠️ Scripts
-
-```bash
-npm run dev       # Start development server
-npm run build     # Build for production
-npm run start     # Start production server
-npm run lint      # Run ESLint
-```
-
----
-
-## 🤝 Contribution Guidelines
-
-We welcome contributors who believe in:
-
-* Ethical technology
-* African innovation
-* Practical problem solving
-
-### How to Contribute
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit with clear messages
-4. Open a pull request
-
----
-
-## 🧭 Roadmap (High-Level)
-
-* Farmer onboarding flows
-* Aggregator dashboards
-* Market pricing views
-* Produce verification workflows
-* Financial & logistics integrations
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## 🌱 Closing Note
-
-AgroChain is not just software.
-
-It is an effort to **rebuild trust in African agriculture**, one farmer, one handshake, and one verified harvest at a time.
+**AgroChain** is the trust and coordination layer for African agriculture, starting in Nigeria. It gives farmers a verified record of every harvest and connects them to buyers who pay fairly, from the farm gate in Benue to processors in Lagos.
 
 > *Proof. Pricing. Prosperity.*
 
 ---
 
+## What's in this repo
+
+This repo is the **website**: Next.js 16 (App Router), Tailwind CSS v4 and Montserrat, hosted on Vercel.
+
+The API it talks to lives in its own repo, **[Jester8/Agrochain-backend](https://github.com/Jester8/Agrochain-backend)** (NestJS). It runs on Render, with Postgres on Neon and email through Brevo, and it's shared with the mobile app.
+
+### Website pages
+
+- `/`, homepage with the market-board price ticker and the Harvest Passport
+- `/marketplace`, search and filter produce by category, state and verification; `/marketplace/[slug]` shows the harvest trace and a make-an-offer form
+- `/blog`, the journal, with categories; `/blog/[slug]` articles
+- `/about`
+- Auth: `/signup` (farmer, cooperative, buyer or aggregator; +234 phone; all 36 states + FCT), `/verify-email` (6-digit code), `/signin`, `/forgot-password`, `/reset-password`
+
+If the API isn't reachable, the site falls back to the sample data in `lib/data/`, so pages always render. The marketplace shows a "preview" notice when it's using sample data.
+
+### Design system
+
+Defined in `app/globals.css`:
+
+- **Colour tokens:** forest (brand), leaf, harvest gold, laterite clay, adire indigo, cream.
+- **Signature textures:** `.aso-oke` (woven stripe divider), `.adire` / `.adire-light` (resist-dye pattern), `.grain`.
+- **Brand assets:** `public/logo/logo.png` (white, for dark surfaces) and `logo-green.png` (for light surfaces). Photos: `public/img/main.jpg` and `public/img/more.jpg`.
+- **Image slots:** planned images are listed in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md). Until a file exists, a branded placeholder tile is shown; drop the file at its path and it appears automatically.
+
+---
+
+## Local development
+
+```bash
+# 1. Start the API (see the Agrochain-backend README), which listens on http://localhost:4000
+# 2. Then, in this repo:
+cp .env.example .env.local   # NEXT_PUBLIC_API_URL=http://localhost:4000
+npm install
+npm run dev                  # http://localhost:3000
+```
+
+With no API running, the site still renders using the sample data in `lib/data/`. Signing in and
+making offers need the API.
+
+`lib/data/` is also the source of the backend's seed data. After changing it, re-export it:
+
+```bash
+npx tsx -e 'import {listings} from "./lib/data/listings"; import {posts} from "./lib/data/posts"; import {marketPrices} from "./lib/data/prices"; require("fs").writeFileSync("../Agrochain-backend/prisma/seed-data.json", JSON.stringify({listings, posts, marketPrices}, null, 2) + "\n")'
+```
+
+## How the site uses the API
+
+- **Server rendering:** `lib/api.ts` fetches listings, posts and prices, caches them briefly and
+  falls back to the sample data if the API is unreachable.
+- **In the browser:** `lib/client-api.ts` handles sign-up, 4-digit email codes, sign-in and
+  password reset.
+  - The API's access and refresh tokens are kept in `localStorage`, the same scheme the mobile
+    app uses.
+  - An expired access token is refreshed automatically.
+
+## Deploying to Vercel
+
+Import the repo (root directory `/`) and set:
+
+```
+NEXT_PUBLIC_API_URL=https://api.agrochain.africa
+NEXT_PUBLIC_SITE_URL=https://agrochain.africa
+```
+
+On the API, add the site's origin to `CORS_ORIGINS`.
+
+---
+
+## 📜 License
+
+MIT © Lazerjet Technologies LTD

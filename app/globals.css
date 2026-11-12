@@ -1,34 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ------------------------------------------------------------------
+   AgroChain design tokens
+   Green and white: forest (brand) and leaf greens on white.
+   Clay is kept only for errors and falling prices.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-forest-950: #0c2213;
+  --color-forest-900: #12331d;
+  --color-forest-800: #184327;
+  --color-forest-700: #1f5a32;
+  --color-forest-600: #2a7340;
+  --color-forest-500: #3a8c50;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-leaf-600: #5a9a2c;
+  --color-leaf-500: #6fae3a;
+  --color-leaf-400: #8cc152;
+  --color-leaf-200: #cfe6b4;
+  --color-leaf-100: #e8f3da;
+
+  /* Accent green (was harvest gold; the palette is green and white) */
+  --color-gold-600: #4e8a25;
+  --color-gold-500: #62a232;
+  --color-gold-400: #8cc152;
+  --color-gold-100: #e8f3da;
+
+  --color-clay-700: #963f20;
+  --color-clay-600: #b4502b;
+  --color-clay-500: #c8643a;
+  --color-clay-100: #f6e1d6;
+
+  --color-adire-900: #0f2a18;
+  --color-adire-800: #1a3d25;
+  --color-adire-100: #e3eee0;
+
+  /* Surfaces: white and soft green tints */
+  --color-cream-50: #ffffff;
+  --color-cream-100: #f3f8f1;
+  --color-cream-200: #e3eee0;
+  --color-cream-300: #cadcc5;
+
+  --color-ink-950: #0f130c;
+  --color-ink-900: #171c13;
+  --color-ink-700: #3a4034;
+  --color-ink-600: #545a4d;
+  --color-ink-500: #6b7064;
+  --color-ink-400: #92978a;
+  --color-ink-300: #b9bcb2;
+
+  --radius-xl2: 1.25rem;
+  --radius-3xl2: 2rem;
+
+  --shadow-soft: 0 1px 2px rgb(23 28 19 / 0.04), 0 8px 24px -8px rgb(23 28 19 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(23 28 19 / 0.05), 0 24px 48px -16px rgb(23 28 19 / 0.22);
+
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+:root {
+  --background: var(--color-cream-50);
+  --foreground: var(--color-ink-900);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-nunito-sans);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "tnum" 0;
+  text-rendering: optimizeLegibility;
 }
 
-.font-slab {
-  font-family: var(--font-slab), serif;
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-ink-950);
 }
 
-.font-alfa {
-  font-family: var(--font-alfa-slab), serif;
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Long-form article typography */
+.prose-agro {
+  color: var(--color-ink-700);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+.prose-agro > * + * { margin-top: 1.25em; }
+.prose-agro h2 {
+  margin-top: 2.2em;
+  color: var(--color-ink-900);
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.prose-agro blockquote {
+  margin: 2em 0;
+  padding: 0.25em 0 0.25em 1.25em;
+  border-left: 4px solid var(--color-gold-500);
+  color: var(--color-forest-800);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+.prose-agro ul { padding-left: 1.25em; list-style: none; }
+.prose-agro li { position: relative; margin-top: 0.6em; }
+.prose-agro li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.75em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--color-leaf-500);
+  transform: rotate(45deg);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
